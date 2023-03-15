@@ -1,0 +1,52 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta content="_IN_R900_oolI5RQXkcge4oNA1j16LtLZH3ej67TyhE" name="google-site-verification"><meta name="referrer" content="no-referrer-when-downgrade"><meta http-equiv="Content-Language" Content="zh-CN"><meta name="description" content=" id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;在论文 &lt;em&gt;Emerging App Issue Identification from User Feedback: Experience on WeChat&lt;/em&gt; 中，作者构建了一个被称为&lt;strong&gt;DIVER&lt;/strong&gt;的新工具。这个工具能够更加高效从用户的评论中发现出现的问题并提供反馈。"><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/noise.css"><title>阅读论文&quot;Emerging App Issue Identification from User Feedback Experience on WeChat&quot; | deepExplore</title><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Hexo 5.2.0"></head><body><article class="wrapper"><div class="post-main"><div class="nav"><nav class="container"><a class="sidebar-nav-item active" href="/">Home</a><a class="sidebar-nav-item" href="/archives">Archives</a><a class="sidebar-nav-item" href="/about">About</a></nav><div class="container post-meta"><div class="post-tags"><a class="post-tag-none-link" href="/tags/nlp/" rel="tag">nlp</a></div><div class="post-time">2021-03-21</div></div></div><div class="container post-header"><h1>阅读论文&quot;Emerging App Issue Identification from User Feedback Experience on WeChat&quot;</h1><p> <strong>本文作者：</strong>deepMin</p><p> <strong>版权声明：</strong><a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" target="_blank">知识共享协议(署名-非商业性使用-禁止演绎 4.0)</a></p><p><span id="busuanzi_container_page_pv"></span><strong>本文总阅读量： </strong><span id="busuanzi_value_page_pv"></span>次</p></div><div class="container post-toc"><details class="toc"><summary class="toc-accordion">Table of Contents</summary><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.</span> <span class="toc-text">具体实现步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Review-Preprocessing"><span class="toc-number">3.1.</span> <span class="toc-text">A. Review Preprocessing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Word-Collocation-Extraction"><span class="toc-number">3.2.</span> <span class="toc-text">B. Word Collocation Extraction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Emerging-Word-Collocation-Detection"><span class="toc-number">3.3.</span> <span class="toc-text">C. Emerging Word Collocation Detection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Issue-Summarization"><span class="toc-number">3.4.</span> <span class="toc-text">D.  Issue Summarization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Emerging-Issue-Report"><span class="toc-number">3.5.</span> <span class="toc-text">Emerging Issue Report</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E8%8E%B7%E5%8F%96"><span class="toc-number">4.</span> <span class="toc-text">论文获取</span></a></li></ol></details></div><div class="container post-content"><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>在论文 <em>Emerging App Issue Identification from User Feedback: Experience on WeChat</em> 中，作者构建了一个被称为<strong>DIVER</strong>的新工具。这个工具能够更加高效从用户的评论中发现出现的问题并提供反馈。</p>
+<p><img src="https://static.deepexplore.top/20210321105240.png" alt="屏幕截图 2021-03-21 105147"></p>
+<center>Example warning captured by DIVER</center>
+
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><strong>DIVER</strong>这个工具在处理过程中包含以下的五个步骤：</p>
+<ul>
+<li>preprocessing user reviews</li>
+<li>extracting word collocations, (3) identifying emerging word collocations</li>
+<li>identifying emerging word collocations</li>
+<li>grouping emerging collocations with similar topics and ranking representative feedback for each topic</li>
+<li>issue visualization</li>
+</ul>
+<p><img src="https://static.deepexplore.top/20210321095441.png" alt="屏幕截图 2021-03-21 095233"></p>
+<center>The overview of DIVER</center>
+
+<h2 id="具体实现步骤"><a href="#具体实现步骤" class="headerlink" title="具体实现步骤"></a>具体实现步骤</h2><h3 id="A-Review-Preprocessing"><a href="#A-Review-Preprocessing" class="headerlink" title="A. Review Preprocessing"></a>A. Review Preprocessing</h3><p>作者主要收集了微信的用户评论。在这些评论中，语言大都为中文和英文。对于中文，作者首先对评论进行了分词操作从而获得一个个句子。然后，作者对这些句子进行形式化操作通过移除标点符号、停止词并过滤一些无信息的词语。对于英文，除了没有进行分词外，其余操作大体一致。</p>
+<h3 id="B-Word-Collocation-Extraction"><a href="#B-Word-Collocation-Extraction" class="headerlink" title="B. Word Collocation Extraction"></a>B. Word Collocation Extraction</h3><p>在这一步中，作者使用了<strong>ECLAT</strong>(Equivalence Class Transformation)一个深度优先的搜索算法来进行模式发掘。通过使用<strong>ECLAT</strong>算法，我们就能获得所有的候选短语，这些候选短语都有着较高的出现频率。</p>
+<p><img src="https://static.deepexplore.top/20210321100920.png" alt="屏幕截图 2021-03-21 100844"></p>
+<center>Example of word collocation extraction</center>
+
+
+
+<h3 id="C-Emerging-Word-Collocation-Detection"><a href="#C-Emerging-Word-Collocation-Detection" class="headerlink" title="C. Emerging Word Collocation Detection"></a>C. Emerging Word Collocation Detection</h3><p>在上一步中，算法搜索到许多word collocations，但是为了选择恰当的word collocation，从而发现用户反馈的问题。作者考虑了三个维度：word collocation、version和time。</p>
+<p><img src="https://static.deepexplore.top/20210321101650.png" alt="屏幕截图 2021-03-21 101606"></p>
+<center>Illustration of determining whether one collocation is emerging or not</center>
+
+<p>其中，蓝色柱表示当前word collocation所占的比重。其中，version window考虑了几个版本之间相同word collocation所占比重的变化情况。当一个word collocation的所占的比重在不同版本之间发现重大的变化，那么可以猜测这个word collocation下出现了问题，所以需要浮现这个word collocation。当然除了考虑不同版本之间的关系，time window考虑了同一版本下，不同时间段下的相同word colocation的的变化情况。当发生巨大波动时，就可以考虑应用出现了问题。</p>
+<h3 id="D-Issue-Summarization"><a href="#D-Issue-Summarization" class="headerlink" title="D.  Issue Summarization"></a>D.  Issue Summarization</h3><p>在这一步中，为了准确的描述新出现的问题，作者首先将表达同一主题的词进行聚类，然后对每个主题中的评论进行排序，以便于开发人员观察。</p>
+<p>其中，使用的聚类算法如下图所示。</p>
+<p><img src="https://static.deepexplore.top/20210321103634.png" alt="屏幕截图 2021-03-21 103548"></p>
+<h3 id="Emerging-Issue-Report"><a href="#Emerging-Issue-Report" class="headerlink" title="Emerging Issue Report"></a>Emerging Issue Report</h3><p>在<strong>DIVER</strong>的最后一步中，作者采用了词图的方式来可视化问题和用户反馈，具体的效果如下图。其中，越大的字体表示更加频繁的出现，红色的字体表示了可能出现的问题。</p>
+<p><img src="https://static.deepexplore.top/20210321104139.png" alt="屏幕截图 2021-03-21 104036"></p>
+<center>Visualization of DIVER’s results</center>
+
+<h2 id="论文获取"><a href="#论文获取" class="headerlink" title="论文获取"></a>论文获取</h2><p><a target="_blank" rel="noopener" href="https://github.com/elfisworking/data_with_paper/blob/main/task1/Emerging%20App%20Issue%20Identification%20from%20User%20Feedback%20-%20Experience%20on%20WeChat%20-%20SEIP19.pdf">下载链接</a></p>
+</div></div><div class="post-main post-comment"><div id="gitalk-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+clientID: 'c764c5e5ccf9d7009356',
+clientSecret: '32895acfc04bb0da88a80e60d39aca1d2656a0e0',
+repo: 'elfisworking.github.io',      // The repository of store comments,
+owner: 'elfisworking',
+admin: ['elfisworking'],
+id: location.pathname,      // Ensure uniqueness and length less than 50
+distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container') 
+</script></div></article><footer class="footer wrapper"><div class="social"><a href="mailto:deepMin@mail.deepexplore.top" target="_blank"><i class="fa fa-envelope-o"></i></a><a href="https://github.com/elfisworking" target="_blank"><i class="fa fa-github"></i></a></div><script async="async" src="//cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js"></script></footer><link rel="stylesheet" type="text/css" href="/css/font.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcdn.net/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcdn.net/ajax/libs/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcdn.net/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcdn.net/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+  $(".fancybox").fancybox();
+});
+</script></body></html>

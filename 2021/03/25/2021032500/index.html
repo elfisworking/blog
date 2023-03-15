@@ -1,0 +1,59 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta content="_IN_R900_oolI5RQXkcge4oNA1j16LtLZH3ej67TyhE" name="google-site-verification"><meta name="referrer" content="no-referrer-when-downgrade"><meta http-equiv="Content-Language" Content="zh-CN"><meta name="description" content=" id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;&lt;code&gt;zsh&lt;/code&gt;是&lt;code&gt;shell&lt;/code&gt;的增强版，它为开发者门提供了更加强大的功能，提高了开发的效率。但是，&lt;code&gt;zsh&lt;/code&gt;配置起来非常麻烦。所以有了&lt;code&gt;oh-my-zsh&lt;/code&gt;。它为&lt;code&gt;zsh&lt;/code&gt;的开发和配置提供了更加简便的方式。"><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/noise.css"><title>安装和配置zsh | deepExplore</title><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Hexo 5.2.0"></head><body><article class="wrapper"><div class="post-main"><div class="nav"><nav class="container"><a class="sidebar-nav-item active" href="/">Home</a><a class="sidebar-nav-item" href="/archives">Archives</a><a class="sidebar-nav-item" href="/about">About</a></nav><div class="container post-meta"><div class="post-tags"><a class="post-tag-none-link" href="/tags/linux/" rel="tag">linux</a></div><div class="post-time">2021-03-25</div></div></div><div class="container post-header"><h1>安装和配置zsh</h1><p> <strong>本文作者：</strong>deepMin</p><p> <strong>版权声明：</strong><a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" target="_blank">知识共享协议(署名-非商业性使用-禁止演绎 4.0)</a></p><p><span id="busuanzi_container_page_pv"></span><strong>本文总阅读量： </strong><span id="busuanzi_value_page_pv"></span>次</p></div><div class="container post-toc"><details class="toc"><summary class="toc-accordion">Table of Contents</summary><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85zsh%E5%92%8Coh-my-zsh"><span class="toc-number">2.</span> <span class="toc-text">安装zsh和oh-my-zsh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEzsh"><span class="toc-number">3.</span> <span class="toc-text">配置zsh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8zsh"><span class="toc-number">4.</span> <span class="toc-text">启动zsh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol></details></div><div class="container post-content"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>zsh</code>是<code>shell</code>的增强版，它为开发者门提供了更加强大的功能，提高了开发的效率。但是，<code>zsh</code>配置起来非常麻烦。所以有了<code>oh-my-zsh</code>。它为<code>zsh</code>的开发和配置提供了更加简便的方式。</p>
+<h2 id="安装zsh和oh-my-zsh"><a href="#安装zsh和oh-my-zsh" class="headerlink" title="安装zsh和oh-my-zsh"></a>安装zsh和oh-my-zsh</h2><ul>
+<li>使用wget</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用curl</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -L http://install.ohmyz.sh | sh</span><br></pre></td></tr></table></figure>
+<ul>
+<li>手动安装</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</span><br><span class="line">$ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span><br></pre></td></tr></table></figure>
+<h2 id="配置zsh"><a href="#配置zsh" class="headerlink" title="配置zsh"></a>配置zsh</h2><ul>
+<li>配置zsh主题</li>
+</ul>
+<p>第一步，使用如下的命令，查看可以使用的主题，并选择一个主题。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/.oh-my-zsh/themes</span><br><span class="line">$ ls</span><br></pre></td></tr></table></figure>
+<p>第二步，修改zsh的配置文件，在<code>ZSH_THEME</code>中填写选择的主题。这里我选择的是 <em>agnoster</em> 这个主题。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://static.deepexplore.top/20210325141111.png" alt="屏幕截图 2021-03-25 140958"></p>
+<ul>
+<li>配置zsh插件</li>
+</ul>
+<p>这里只配置我所使用的两个插件。一个是<code>zsh-autosuggestions</code>，它可以记忆过去使用的命令并在拼写时给予提示。一个是<code>zsh-syntax-highlighting</code>，它提供了语法高亮的功能。</p>
+<p>安装使用如下的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
+<p>然后，再次打开<code>.zshrc</code>文件，在<code>plugins</code>处添加插件，其中<code>git</code>为<code>oh-my-zsh</code>默认安装的插件。如下图所示：</p>
+<p><img src="https://static.deepexplore.top/20210325141950.png" alt="屏幕截图 2021-03-25 141923"></p>
+<h2 id="启动zsh"><a href="#启动zsh" class="headerlink" title="启动zsh"></a>启动zsh</h2><p>首先，使用如下的命令启动<code>zsh</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>然后，使用如下的命令，将<code>zsh</code>设置为默认的<code>shell</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">https://github.com/ohmyzsh/ohmyzsh</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-autosuggestions">https://github.com/zsh-users/zsh-autosuggestions</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-syntax-highlighting">https://github.com/zsh-users/zsh-syntax-highlighting</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/80487506">https://zhuanlan.zhihu.com/p/80487506</a></li>
+</ul>
+</div></div><div class="post-main post-comment"><div id="gitalk-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+clientID: 'c764c5e5ccf9d7009356',
+clientSecret: '32895acfc04bb0da88a80e60d39aca1d2656a0e0',
+repo: 'elfisworking.github.io',      // The repository of store comments,
+owner: 'elfisworking',
+admin: ['elfisworking'],
+id: location.pathname,      // Ensure uniqueness and length less than 50
+distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container') 
+</script></div></article><footer class="footer wrapper"><div class="social"><a href="mailto:deepMin@mail.deepexplore.top" target="_blank"><i class="fa fa-envelope-o"></i></a><a href="https://github.com/elfisworking" target="_blank"><i class="fa fa-github"></i></a></div><script async="async" src="//cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js"></script></footer><link rel="stylesheet" type="text/css" href="/css/font.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcdn.net/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcdn.net/ajax/libs/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcdn.net/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcdn.net/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+  $(".fancybox").fancybox();
+});
+</script></body></html>
